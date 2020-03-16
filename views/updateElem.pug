@@ -9,7 +9,7 @@ html(lang="fr")
     h1 Qui prend quoi ?
     h2 mise a jour de l'element
      each item in party.items
-        if item._id = idElement
+        if item._id == idElement
             form(method="post" action=`/party/${idParty}/items/${item._id}?_method=PATCH`)
                 div
                     label(for="name") Nom de l'item

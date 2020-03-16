@@ -13,7 +13,6 @@ html(lang="fr")
         h2 les items
         ul
             each item in party.items
-                p= JSON.stringify(item)
                 li #{item.name} est ramener par #{item.user}
                     form(action=`/party/${idParty}/items/${item._id}?_method=DELETE` method="post" )
                         button(type="submit") supprimer
