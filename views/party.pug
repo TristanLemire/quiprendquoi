@@ -8,3 +8,20 @@ html(lang="fr")
         h1 Qui prend quoi ?
         h2= party.name
         h3 Créé par #{party.author}
+        label(for="url") Partagez l'événement
+        input(id="url" value=`${url}`)
+        h2 les items
+        ul
+            each item in party.items
+                form(action=`/party/${idParty}/items/${item._id}?_method=DELETE` method="post" )
+                    li= item.name
+                    button(type="submit") supprimer
+        h2 Ajout d'un item
+        form(method="post" action=`/party/${idParty}/items`)
+            div
+                label(for="name") Nom de l'item
+                input(name="name" id="name" required minlength="3" placeholder="Nouvel an")
+                label(for="author") Auteur
+                input(name="author" id="author" required minlength="3" placeholder="Monsieur Smith")
+            button(type="submit") Ajouter
+

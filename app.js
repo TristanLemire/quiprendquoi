@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+var methodOverride = require('method-override')
 const bodyParser = require('body-parser');
 const axios = require('axios');
 
@@ -7,6 +8,7 @@ const axios = require('axios');
 require('dotenv').config();
 
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(methodOverride('_method'))
 
 app.set('view engine', 'pug');
 
@@ -15,12 +17,24 @@ app.get('/', function(req, res) {
   });
 
   app.post('/party', function(req, res) {
-    console.log(req.body)
     axios
-    .post(`${process.env.API_URL}/party`, req.body)
-    .then(({data}) => console.log(data))
-    .catch((err) => console.error(err));  
-    console.log(req.params.id)
+  .post(`${process.env.API_URL}/party`, req.body)
+  .then(({ data }) => res.redirect(`/party/${data._id}`))
+  .catch((err) => res.send(err));
+  });
+
+  app.post('/party/:id/items', function(req, res) {
+    axios
+  .post(`${process.env.API_URL}/party/${req.params.id}/items`, req.body)
+  .then(() => res.redirect(`/party/${req.params.id}`))
+  .catch((err) => res.send(err));
+  });
+
+  app.delete('/party/:id/items/:idElem', function(req, res) {
+    axios
+  .delete(`${process.env.API_URL}/party/${req.params.id}/items/${req.params.idElem} `)
+  .then(() => res.redirect(`/party/${req.params.id}`))
+  .catch((err) => res.send(err));
   });
 
   app.get('/party/:id', function(req, res) {
@@ -29,7 +43,9 @@ app.get('/', function(req, res) {
     .then(({ data }) =>
     res.render('party', {
       party: data,
-      title: data.name
+      title: data.name,
+      idParty: req.params.id,
+      url: `${process.env.FRONT_URL}:${process.env.PORT}/party/${data._id}`
     }),
   )
   .catch((err) => console.log(err));
