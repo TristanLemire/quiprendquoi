@@ -13,15 +13,24 @@ html(lang="fr")
         h2 les items
         ul
             each item in party.items
-                form(action=`/party/${idParty}/items/${item._id}?_method=DELETE` method="post" )
-                    li= item.name
-                    button(type="submit") supprimer
+                p= JSON.stringify(item)
+                li #{item.name} est ramener par #{item.user}
+                    form(action=`/party/${idParty}/items/${item._id}?_method=DELETE` method="post" )
+                        button(type="submit") supprimer
+                    form(method="get" action=`/party/${idParty}/items/${item._id}/update`)
+                        button(type="submit") modifier
         h2 Ajout d'un item
         form(method="post" action=`/party/${idParty}/items`)
             div
                 label(for="name") Nom de l'item
                 input(name="name" id="name" required minlength="3" placeholder="Nouvel an")
-                label(for="author") Auteur
-                input(name="author" id="author" required minlength="3" placeholder="Monsieur Smith")
+                label(for="user") Auteur
+                input(name="user" id="user" required minlength="3" placeholder="Monsieur Smith")
             button(type="submit") Ajouter
+        h2 Mise a jour de l'evenement
+        form(method="get" action=`/party/${idParty}/update`)
+            button(type="submit") modifier
+        h2 Supprimer l'evenemnt
+        form(method="post" action=`/party/${idParty}?_method=DELETE`)
+            button(type="submit") Supprimer
 

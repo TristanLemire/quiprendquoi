@@ -37,6 +37,31 @@ app.get('/', function(req, res) {
   .catch((err) => res.send(err));
   });
 
+  app.delete('/party/:id', function(req, res) {
+    axios
+  .delete(`${process.env.API_URL}/party/${req.params.id}`)
+  .then(() =>
+    res.render('index', {
+      messageParty: "événement supprimer"
+    }),
+  )
+  .catch((err) => res.send(err));
+  });
+
+  app.patch('/party/:id', function(req, res) {
+    axios
+  .patch(`${process.env.API_URL}/party/${req.params.id}`, req.body)
+  .then(() => res.redirect(`/party/${req.params.id}`))
+  .catch((err) => res.send(err));
+  });
+
+  app.patch('/party/:id/items/:idElem', function(req, res) {
+    axios
+  .patch(`${process.env.API_URL}/party/${req.params.id}/items/${req.params.idElem}`, req.body)
+  .then(() => res.redirect(`/party/${req.params.id}`))
+  .catch((err) => res.send(err));
+  });
+
   app.get('/party/:id', function(req, res) {
     axios
     .get(`${process.env.API_URL}/party/${req.params.id}`)
@@ -45,10 +70,38 @@ app.get('/', function(req, res) {
       party: data,
       title: data.name,
       idParty: req.params.id,
-      url: `${process.env.FRONT_URL}:${process.env.PORT}/party/${data._id}`
+      url: `${process.env.FRONT_URL}:${process.env.PORT}/party/items/${data._id}`
     }),
   )
   .catch((err) => console.log(err));
   });
+
+  app.get('/party/:id/update', function(req, res) {
+    axios
+    .get(`${process.env.API_URL}/party/${req.params.id}`)
+    .then(({ data }) =>
+    res.render('updateEvent', {
+      party: data,
+      title: data.name,
+      idParty: req.params.id
+    }),
+  )
+  .catch((err) => console.log(err));
+  });
+
+  app.get('/party/:id/items/:idElem/update', function(req, res) {
+    axios
+    .get(`${process.env.API_URL}/party/${req.params.id}`)
+    .then(({ data }) =>
+    res.render('updateElem', {
+      party: data,
+      title: data.name,
+      idParty: req.params.id,
+      idElement: req.params.idElem
+    }),
+  )
+  .catch((err) => console.log(err));
+  });
+
 
 app.listen(process.env.PORT, () => console.log(`Front app listening on port ${process.env.PORT}!`));
