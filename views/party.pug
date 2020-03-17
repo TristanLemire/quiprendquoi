@@ -8,8 +8,6 @@ html(lang="fr")
     h1 Qui prend quoi ?
     h2= party.name
     h3 Créé par #{party.author}
-    label(for="url") Partagez l'événement
-    input#url(, value=`${url}`)
     h2 les items
     p= messageElem
     ul
@@ -49,3 +47,5 @@ html(lang="fr")
     h2 Supprimer l'evenemnt
     form(method="post", action=`/party/${idParty}?_method=DELETE`).newParty
       button(type="submit") Supprimer
+    label(for="url") Partagez l'événement
+    input(id="url" value=`${url}` data-clipboard=`${url}`)
