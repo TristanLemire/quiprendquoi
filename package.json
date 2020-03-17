@@ -4,10 +4,12 @@
   "description": "Cours Bastien Calou",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon app.js",
+    "start": "concurrently --kill-others \"npm run sass\" \"npm run watchify\" \"nodemon app.js\"",
     "prettier": "./node_modules/.bin/prettier --write '**/*.pug' ./node_modules/.bin/prettier --write '**/*.js'",
     "prettier_pug": "./node_modules/.bin/prettier --write '**/*.pug'",
-    "prettier_js": "./node_modules/.bin/prettier --write '**/*.js'"
+    "prettier_js": "./node_modules/.bin/prettier --write '**/*.js'",
+    "sass": "node-sass styles/style.scss public/style.css -w --output-style compressed",
+    "watchify": "watchify scripts/*.js -o public/script.js -t [ babelify --presets [ @babel/preset-env babel-preset-minify ] ]"
   },
   "repository": {
     "type": "git",
@@ -31,6 +33,13 @@
     "pug": "^2.0.4"
   },
   "devDependencies": {
-    "nodemon": "^2.0.2"
+    "@babel/core": "^7.8.7",
+    "@babel/preset-env": "^7.8.7",
+    "babel-preset-minify": "^0.5.1",
+    "babelify": "^10.0.0",
+    "concurrently": "^5.1.0",
+    "node-sass": "^4.13.1",
+    "nodemon": "^2.0.2",
+    "watchify": "^3.11.1"
   }
 }

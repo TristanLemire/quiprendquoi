@@ -11,6 +11,7 @@ html(lang="fr")
     label(for="url") Partagez l'événement
     input#url(, value=`${url}`)
     h2 les items
+    p= messageElem
     ul
       each item in party.items
         li #{item.name} est ramener par #{item.user}
@@ -25,8 +26,8 @@ html(lang="fr")
           )
             button(type="submit") modifier
     h2 Ajout d'un item
-    form(method="post", action=`/party/${idParty}/items`)
-      div
+    form(method="post", action=`/party/${idParty}/items`).newParty
+      div.newParty__fields
         label(for="name") Nom de l'item
         input#name(
           name="name",
@@ -43,8 +44,8 @@ html(lang="fr")
         )
       button(type="submit") Ajouter
     h2 Mise a jour de l'evenement
-    form(method="get", action=`/party/${idParty}/update`)
+    form(method="get", action=`/party/${idParty}/update`).newParty
       button(type="submit") modifier
     h2 Supprimer l'evenemnt
-    form(method="post", action=`/party/${idParty}?_method=DELETE`)
+    form(method="post", action=`/party/${idParty}?_method=DELETE`).newParty
       button(type="submit") Supprimer

@@ -9,6 +9,7 @@ require("dotenv").config();
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
+app.use(express.static("public"));
 
 app.set("view engine", "pug");
 

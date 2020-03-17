@@ -13,8 +13,8 @@ html(lang="fr")
           form(
             method="post",
             action=`/party/${idParty}/items/${item._id}?_method=PATCH`
-          )
-            div
+          ).newParty
+            div.newParty__fields
               label(for="name") Nom de l'item
               input#name(
                 name="name",
