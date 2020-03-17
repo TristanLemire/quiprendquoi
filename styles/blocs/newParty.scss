@@ -1,6 +1,6 @@
 .newParty__fields {
     margin-bottom: 1em;
-  
+    position: relative;
     @include medium {
       display: grid;
       grid-template-columns: 175px 1fr;

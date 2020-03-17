@@ -7,8 +7,8 @@ html(lang="fr")
     include ../partials/header.pug
     h1 Qui prend quoi ?
     h2 mise a jour de l'evenement
-    form(method="post", action=`/party/${idParty}?_method=PATCH`).newParty
-      div.newParty__fields
+    form.newParty(method="post", action=`/party/${idParty}?_method=PATCH`)
+      .newParty__fields
         label(for="name") Nom de l'événement
         input#name(
           name="name",

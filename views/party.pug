@@ -24,8 +24,8 @@ html(lang="fr")
           )
             button(type="submit") modifier
     h2 Ajout d'un item
-    form(method="post", action=`/party/${idParty}/items`).newParty
-      div.newParty__fields
+    form.newParty(method="post", action=`/party/${idParty}/items`)
+      .newParty__fields
         label(for="name") Nom de l'item
         input#name(
           name="name",
@@ -42,10 +42,21 @@ html(lang="fr")
         )
       button(type="submit") Ajouter
     h2 Mise a jour de l'evenement
-    form(method="get", action=`/party/${idParty}/update`).newParty
+    form.newParty(method="get", action=`/party/${idParty}/update`)
       button(type="submit") modifier
     h2 Supprimer l'evenemnt
-    form(method="post", action=`/party/${idParty}?_method=DELETE`).newParty
+    form.newParty(method="post", action=`/party/${idParty}?_method=DELETE`)
       button(type="submit") Supprimer
-    label(for="url") Partagez l'événement
-    input(id="url" value=`${url}` data-clipboard=`${url}`)
+    div
+      label(for="url") Partagez l'événement
+      input#url(
+        ,
+        value=`${url}`,
+        data-clipboard=`${url}`,
+        data-share-url=`${url}`,
+        data-share-title=`${party.name}`,
+        data-share-text=`${party.author} vous invite a rejoindre l'événement ${party.name}`
+      )
+    button(id="find-me") Montrer ma localisation
+    p(id="status")
+    a(id="map-link" target="_blank")

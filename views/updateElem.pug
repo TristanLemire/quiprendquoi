@@ -10,11 +10,11 @@ html(lang="fr")
     h2 mise a jour de l'element
       each item in party.items
         if item._id == idElement
-          form(
+          form.newParty(
             method="post",
             action=`/party/${idParty}/items/${item._id}?_method=PATCH`
-          ).newParty
-            div.newParty__fields
+          )
+            .newParty__fields
               label(for="name") Nom de l'item
               input#name(
                 name="name",
