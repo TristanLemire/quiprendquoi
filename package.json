@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon app.js",
-    "prettier_all": "./node_modules/.bin/prettier --write '**/*.pug' ./node_modules/.bin/prettier --write '**/*.js'"
+    "prettier": "./node_modules/.bin/prettier --write '**/*.pug' ./node_modules/.bin/prettier --write '**/*.js'",
+    "prettier_pug": "./node_modules/.bin/prettier --write '**/*.pug'",
+    "prettier_js": "./node_modules/.bin/prettier --write '**/*.js'"
   },
   "repository": {
     "type": "git",
