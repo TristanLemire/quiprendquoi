@@ -1,35 +1,50 @@
 html(lang="fr")
-    head
-        meta(charset="UTF-8")
-        meta(name="viewport", content="width=device-width, initial-scale=1.0")
-        meta(http-equiv="X-UA-Compatible", content="ie=edge")
-    body
-        include ../partials/header.pug
-        h1 Qui prend quoi ?
-        h2= party.name
-        h3 Créé par #{party.author}
-        label(for="url") Partagez l'événement
-        input(id="url" value=`${url}`)
-        h2 les items
-        ul
-            each item in party.items
-                li #{item.name} est ramener par #{item.user}
-                    form(action=`/party/${idParty}/items/${item._id}?_method=DELETE` method="post" )
-                        button(type="submit") supprimer
-                    form(method="get" action=`/party/${idParty}/items/${item._id}/update`)
-                        button(type="submit") modifier
-        h2 Ajout d'un item
-        form(method="post" action=`/party/${idParty}/items`)
-            div
-                label(for="name") Nom de l'item
-                input(name="name" id="name" required minlength="3" placeholder="Nouvel an")
-                label(for="user") Auteur
-                input(name="user" id="user" required minlength="3" placeholder="Monsieur Smith")
-            button(type="submit") Ajouter
-        h2 Mise a jour de l'evenement
-        form(method="get" action=`/party/${idParty}/update`)
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    meta(http-equiv="X-UA-Compatible", content="ie=edge")
+  body
+    include ../partials/header.pug
+    h1 Qui prend quoi ?
+    h2= party.name
+    h3 Créé par #{party.author}
+    label(for="url") Partagez l'événement
+    input#url(, value=`${url}`)
+    h2 les items
+    ul
+      each item in party.items
+        li #{item.name} est ramener par #{item.user}
+          form(
+            action=`/party/${idParty}/items/${item._id}?_method=DELETE`,
+            method="post"
+          )
+            button(type="submit") supprimer
+          form(
+            method="get",
+            action=`/party/${idParty}/items/${item._id}/update`
+          )
             button(type="submit") modifier
-        h2 Supprimer l'evenemnt
-        form(method="post" action=`/party/${idParty}?_method=DELETE`)
-            button(type="submit") Supprimer
-
+    h2 Ajout d'un item
+    form(method="post", action=`/party/${idParty}/items`)
+      div
+        label(for="name") Nom de l'item
+        input#name(
+          name="name",
+          required,
+          minlength="3",
+          placeholder="Nouvel an"
+        )
+        label(for="user") Auteur
+        input#user(
+          name="user",
+          required,
+          minlength="3",
+          placeholder="Monsieur Smith"
+        )
+      button(type="submit") Ajouter
+    h2 Mise a jour de l'evenement
+    form(method="get", action=`/party/${idParty}/update`)
+      button(type="submit") modifier
+    h2 Supprimer l'evenemnt
+    form(method="post", action=`/party/${idParty}?_method=DELETE`)
+      button(type="submit") Supprimer
