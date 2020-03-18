@@ -5,6 +5,8 @@ html(lang="fr")
     meta(http-equiv="X-UA-Compatible", content="ie=edge")
   body
     include ../partials/header.pug
+    script.
+      party = !{JSON.stringify(party)}
     h1 Qui prend quoi ?
     h2= party.name
     h3 Créé par #{party.author}
@@ -57,6 +59,6 @@ html(lang="fr")
         data-share-title=`${party.name}`,
         data-share-text=`${party.author} vous invite a rejoindre l'événement ${party.name}`
       )
-    button(id="find-me") Montrer ma localisation
-    p(id="status")
-    a(id="map-link" target="_blank")
+    button#find-me Montrer ma localisation
+    p#status
+    a#map-link(, target="_blank")
