@@ -1,36 +1,30 @@
-html(lang="fr")
-  head
-    meta(charset="UTF-8")
-    meta(name="viewport", content="width=device-width, initial-scale=1.0")
-    meta(http-equiv="X-UA-Compatible", content="ie=edge")
-  body
-    include ../partials/header.pug
-    h1 Qui prend quoi ?
-    h2 mise a jour de l'evenement
-    form.newParty(method="post", action=`/party/${idParty}?_method=PATCH`)
-      .newParty__fields
-        label(for="name") Nom de l'événement
-        input#name(
-          name="name",
-          required,
-          minlength="3",
-          placeholder="Nouvel an",
-          value=`${party.name}`
-        )
-        label(for="author") Auteur
-        input#author(
-          name="author",
-          required,
-          minlength="3",
-          placeholder="Monsieur Smith",
-          value=`${party.author}`
-        )
-        label(for="date") Date
-        input#date(
-          name="date",
-          maxlength="10",
-          minlength="10",
-          placeholder="YYYY-MM-DD",
-          value=`${party.date}`
-        )
-      button(type="submit") Créer
+include ../partials/header.pug
+h1 Qui prend quoi ?
+h2 mise a jour de l'evenement
+form.newParty(method="post", action=`/party/${idParty}?_method=PATCH`)
+  .newParty__fields
+    label(for="name") Nom de l'événement
+    input#name(
+      name="name",
+      required,
+      minlength="3",
+      placeholder="Nouvel an",
+      value=`${party.name}`
+    )
+    label(for="author") Auteur
+    input#author(
+      name="author",
+      required,
+      minlength="3",
+      placeholder="Monsieur Smith",
+      value=`${party.author}`
+    )
+    label(for="date") Date
+    input#date(
+      name="date",
+      maxlength="10",
+      minlength="10",
+      placeholder="YYYY-MM-DD",
+      value=`${party.date}`
+    )
+  button(type="submit") Créer

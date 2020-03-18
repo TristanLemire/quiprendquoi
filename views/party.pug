@@ -1,64 +1,50 @@
-html(lang="fr")
-  head
-    meta(charset="UTF-8")
-    meta(name="viewport", content="width=device-width, initial-scale=1.0")
-    meta(http-equiv="X-UA-Compatible", content="ie=edge")
-  body
-    include ../partials/header.pug
-    script.
-      party = !{JSON.stringify(party)}
-    h1 Qui prend quoi ?
-    h2= party.name
-    h3 Créé par #{party.author}
-    h2 les items
-    p= messageElem
-    ul
-      each item in party.items
-        li #{item.name} est ramener par #{item.user}
-          form(
-            action=`/party/${idParty}/items/${item._id}?_method=DELETE`,
-            method="post"
-          )
-            button(type="submit") supprimer
-          form(
-            method="get",
-            action=`/party/${idParty}/items/${item._id}/update`
-          )
-            button(type="submit") modifier
-    h2 Ajout d'un item
-    form.newParty(method="post", action=`/party/${idParty}/items`)
-      .newParty__fields
-        label(for="name") Nom de l'item
-        input#name(
-          name="name",
-          required,
-          minlength="3",
-          placeholder="Nouvel an"
-        )
-        label(for="user") Auteur
-        input#user(
-          name="user",
-          required,
-          minlength="3",
-          placeholder="Monsieur Smith"
-        )
-      button(type="submit") Ajouter
-    h2 Mise a jour de l'evenement
-    form.newParty(method="get", action=`/party/${idParty}/update`)
-      button(type="submit") modifier
-    h2 Supprimer l'evenemnt
-    form.newParty(method="post", action=`/party/${idParty}?_method=DELETE`)
-      button(type="submit") Supprimer
-    div
-      label(for="url") Partagez l'événement
-      input#url(
-        ,
-        value=`${url}`,
-        data-clipboard=`${url}`,
-        data-share-url=`${url}`,
-        data-share-title=`${party.name}`,
-        data-share-text=`${party.author} vous invite a rejoindre l'événement ${party.name}`
+include ../partials/header.pug
+script.
+  party = !{JSON.stringify(party)}
+h1 Qui prend quoi ?
+h2= party.name
+h3 Créé par #{party.author}
+h2 les items
+p= messageElem
+ul
+  each item in party.items
+    li #{item.name} est ramener par #{item.user}
+      form(
+        action=`/party/${idParty}/items/${item._id}?_method=DELETE`,
+        method="post"
       )
-    button#find-me Montrer ma localisation
-    p#status
-    a#map-link(, target="_blank")
+        button(type="submit") supprimer
+      form(method="get", action=`/party/${idParty}/items/${item._id}/update`)
+        button(type="submit") modifier
+h2 Ajout d'un item
+form.newParty(method="post", action=`/party/${idParty}/items`)
+  .newParty__fields
+    label(for="name") Nom de l'item
+    input#name(name="name", required, minlength="3", placeholder="Nouvel an")
+    label(for="user") Auteur
+    input#user(
+      name="user",
+      required,
+      minlength="3",
+      placeholder="Monsieur Smith"
+    )
+  button(type="submit") Ajouter
+h2 Mise a jour de l'evenement
+form.newParty(method="get", action=`/party/${idParty}/update`)
+  button(type="submit") modifier
+h2 Supprimer l'evenemnt
+form.newParty(method="post", action=`/party/${idParty}?_method=DELETE`)
+  button(type="submit") Supprimer
+div
+  label(for="url") Partagez l'événement
+  input#url(
+    ,
+    value=`${url}`,
+    data-clipboard=`${url}`,
+    data-share-url=`${url}`,
+    data-share-title=`${party.name}`,
+    data-share-text=`${party.author} vous invite a rejoindre l'événement ${party.name}`
+  )
+button#find-me Montrer ma localisation
+p#status
+a#map-link(, target="_blank")

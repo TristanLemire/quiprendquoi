@@ -1,34 +1,28 @@
-html(lang="fr")
-  head
-    title= title
-    meta(charset="UTF-8")
-    meta(name="viewport", content="width=device-width, initial-scale=1.0")
-    meta(http-equiv="X-UA-Compatible", content="ie=edge")
-  body
-    include ../partials/header.pug
-    h1 Qui prend quoi ?
-    h2 mise a jour de l'element
-      each item in party.items
-        if item._id == idElement
-          form.newParty(
-            method="post",
-            action=`/party/${idParty}/items/${item._id}?_method=PATCH`
+
+include ../partials/header.pug
+h1 Qui prend quoi ?
+h2 mise a jour de l'element
+  each item in party.items
+    if item._id == idElement
+      form.newParty(
+        method="post",
+        action=`/party/${idParty}/items/${item._id}?_method=PATCH`
+      )
+        .newParty__fields
+          label(for="name") Nom de l'item
+          input#name(
+            name="name",
+            required,
+            minlength="3",
+            placeholder="Nouvel an",
+            value=`${item.name}`
           )
-            .newParty__fields
-              label(for="name") Nom de l'item
-              input#name(
-                name="name",
-                required,
-                minlength="3",
-                placeholder="Nouvel an",
-                value=`${item.name}`
-              )
-              label(for="user") Auteur
-              input#user(
-                name="user",
-                required,
-                minlength="3",
-                placeholder="Monsieur Smith",
-                value=`${item.user}`
-              )
-            button(type="submit") Modifier
+          label(for="user") Auteur
+          input#user(
+            name="user",
+            required,
+            minlength="3",
+            placeholder="Monsieur Smith",
+            value=`${item.user}`
+          )
+        button(type="submit") Modifier

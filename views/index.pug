@@ -1,36 +1,26 @@
-html(lang="fr")
-  head
-    meta(charset="UTF-8")
-    meta(name="viewport", content="width=device-width, initial-scale=1.0")
-    meta(http-equiv="X-UA-Compatible", content="ie=edge")
-  body
-    .home
-      h1 Qui prend quoi ?
-      include ../partials/header.pug
-      p= messageParty
-      h2 Créer un événement
-      form.newParty(method="post", action="/party")
-        .newParty__fields
-          label(for="name") Nom de l'événement
-          input#name(
-            name="name",
-            required,
-            minlength="3",
-            placeholder="Nouvel an"
-          )
-          label(for="author") Auteur
-          input#author(
-            name="author",
-            required,
-            minlength="3",
-            placeholder="Monsieur Smith"
-          )
-          label(for="date") Date
-          input#date(
-            type="date",
-            name="date",
-            maxlength="10",
-            minlength="10",
-            placeholder="YYYY-MM-DD"
-          )
-          button(type="submit") Créer
+body
+  .home
+include ../partials/header.pug
+h1 Qui prend quoi ?
+p= messageParty
+h2 Créer un événement
+form.newParty(method="post", action="/party")
+  .newParty__fields
+    label(for="name") Nom de l'événement
+    input#name(name="name", required, minlength="3", placeholder="Nouvel an")
+    label(for="author") Auteur
+    input#author(
+      name="author",
+      required,
+      minlength="3",
+      placeholder="Monsieur Smith"
+    )
+    label(for="date") Date
+    input#date(
+      type="date",
+      name="date",
+      maxlength="10",
+      minlength="10",
+      placeholder="YYYY-MM-DD"
+    )
+    button(type="submit") Créer
