@@ -1,28 +1,27 @@
-
 include ../partials/header.pug
-h1 Qui prend quoi ?
-h2 mise a jour de l'element
-  each item in party.items
-    if item._id == idElement
-      form.newParty(
-        method="post",
-        action=`/party/${idParty}/items/${item._id}?_method=PATCH`
-      )
-        .newParty__fields
-          label(for="name") Nom de l'item
-          input#name(
-            name="name",
-            required,
-            minlength="3",
-            placeholder="Nouvel an",
-            value=`${item.name}`
-          )
-          label(for="user") Auteur
-          input#user(
-            name="user",
-            required,
-            minlength="3",
-            placeholder="Monsieur Smith",
-            value=`${item.user}`
-          )
-        button(type="submit") Modifier
+div.form_wrapper
+  div.form_container
+    div.title_container
+      h1 Qui prend quoi ?
+      h2 mise a jour de l'element
+    each item in party.items
+      if item._id == idElement 
+        div.row.clearfix
+          div
+            form(method="post", action=`/party/${idParty}/items/${item._id}?_method=PATCH`)
+              div.input_field
+                span
+                  i.fa.fa-birthday-cake(aria-hidden="true")
+                input#name(type="text", name="name", required, minlength="3", placeholder="Gateau" value=`${item.name}`)
+              div.input_field
+                span
+                  i.fa.fa-user(aria-hidden="true")
+                input#user(
+                  type="text",
+                  name="user",
+                  required,
+                  minlength="3",
+                  placeholder="Monsieur Smith"
+                  value=`${item.user}`
+                )
+              input.button(type="submit" value="Modifier")

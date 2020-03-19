@@ -1,26 +1,33 @@
-body
-  .home
 include ../partials/header.pug
-h1 Qui prend quoi ?
-p= messageParty
-h2 Créer un événement
-form.newParty(method="post", action="/party")
-  .newParty__fields
-    label(for="name") Nom de l'événement
-    input#name(name="name", required, minlength="3", placeholder="Nouvel an")
-    label(for="author") Auteur
-    input#author(
-      name="author",
-      required,
-      minlength="3",
-      placeholder="Monsieur Smith"
-    )
-    label(for="date") Date
-    input#date(
-      type="date",
-      name="date",
-      maxlength="10",
-      minlength="10",
-      placeholder="YYYY-MM-DD"
-    )
-    button(type="submit") Créer
+div.form_wrapper
+  div.form_container
+    div.title_container
+      h1 Qui prend quoi ?
+    div.row.clearfix
+      div
+        form(method="post", action="/party")
+          div.input_field
+            span
+              i.fa.fa-glass(aria-hidden="true")
+            input#name(type="text" ,name="name", required, minlength="3", placeholder="Nom de l'événement")
+          div.input_field
+            span
+              i.fa.fa-user(aria-hidden="true")
+            input#author(
+              type="text"
+              name="author",
+              required,
+              minlength="3",
+              placeholder="Auteur"
+            )
+          div.input_field
+            span
+              i.fa.fa-calendar(aria-hidden="true")
+            input#date(
+              type="date",
+              name="date",
+              maxlength="10",
+              minlength="10",
+              placeholder="Date"
+            )
+          input.button(type="submit" value="Créer")
