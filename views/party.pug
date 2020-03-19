@@ -12,13 +12,13 @@ div.form_wrapper
     ul
       each item in party.items
         li #{item.name} est ramener par #{item.user}
+          form(method="get", action=`/party/${idParty}/items/${item._id}/update`)
+            input.button(type="submit" value="modifier")
           form(
             action=`/party/${idParty}/items/${item._id}?_method=DELETE`,
             method="post"
           )
             input.danger(type="submit" value="supprimer")
-          form(method="get", action=`/party/${idParty}/items/${item._id}/update`)
-            input.button(type="submit" value="modifier")
     h2 Ajout d'un item
       div.row.clearfix
         div
