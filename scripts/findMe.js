@@ -10,7 +10,8 @@ function geoFindMe() {
     const longitude = position.coords.longitude;
 
     status.textContent = "";
-    mapLink.href = `https://www.google.fr/maps/@${latitude}/${longitude}`;
+
+    mapLink.href = `    https://www.google.com/maps/search/?api=1&query=${latitude},${longitude}`;
     mapLink.textContent = `voir sur google map`;
   }
 
