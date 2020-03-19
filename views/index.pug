@@ -1,26 +1,32 @@
 include ../partials/header.pug
-div.form_wrapper
-  div.form_container
-    div.title_container
+.form_wrapper
+  .form_container
+    .title_container
       h1 Qui prend quoi ?
-    div.row.clearfix
+    .row.clearfix
       div
         form(method="post", action="/party")
-          div.input_field
+          .input_field
             span
               i.fa.fa-glass(aria-hidden="true")
-            input#name(type="text" ,name="name", required, minlength="3", placeholder="Nom de l'événement")
-          div.input_field
+            input#name(
+              type='text',
+              name="name",
+              required,
+              minlength="3",
+              placeholder="Nom de l'événement"
+            )
+          .input_field
             span
               i.fa.fa-user(aria-hidden="true")
             input#author(
-              type="text"
+              type="text",
               name="author",
               required,
               minlength="3",
               placeholder="Auteur"
             )
-          div.input_field
+          .input_field
             span
               i.fa.fa-calendar(aria-hidden="true")
             input#date(
@@ -30,4 +36,4 @@ div.form_wrapper
               minlength="10",
               placeholder="Date"
             )
-          input.button(type="submit" value="Créer")
+          input.button(type="submit", value="Créer")

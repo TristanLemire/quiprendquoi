@@ -1,9 +1,9 @@
 include ../partials/header.pug
 script.
   party = !{JSON.stringify(party)}
-div.form_wrapper
-  div.form_container
-    div.title_container
+.form_wrapper
+  .form_container
+    .title_container
       h1 Qui prend quoi ?
     h2= party.name
     h3 Créé par #{party.author}
@@ -12,40 +12,49 @@ div.form_wrapper
     ul
       each item in party.items
         li #{item.name} est ramener par #{item.user}
-          form(method="get", action=`/party/${idParty}/items/${item._id}/update`)
-            input.button(type="submit" value="modifier")
+          form(
+            method="get",
+            action=`/party/${idParty}/items/${item._id}/update`
+          )
+            input.button(type="submit", value="modifier")
           form(
             action=`/party/${idParty}/items/${item._id}?_method=DELETE`,
             method="post"
           )
-            input.danger(type="submit" value="supprimer")
+            input.danger(type="submit", value="supprimer")
     h2 Ajout d'un item
-      div.row.clearfix
+      .row.clearfix
         div
           form.newParty(method="post", action=`/party/${idParty}/items`)
-            div.input_field
+            .input_field
               span
                 i.fa.fa-birthday-cake(aria-hidden="true")
-              input#name(type="text" ,name="name", required, minlength="3", placeholder="Gateau")
-            div.input_field
+              input#name(
+                type='text',
+                name="name",
+                required,
+                minlength="3",
+                placeholder="Gateau"
+              )
+            .input_field
               span
                 i.fa.fa-user(aria-hidden="true")
               input#user(
-                type="text" ,
+                type='text',
                 name="user",
                 required,
                 minlength="3",
                 placeholder="Monsieur Smith"
               )
-            input.button(type="submit" value="Ajouter")
+            input.button(type="submit", value="Ajouter")
     h2 Mise a jour de l'evenement
     form.newParty(method="get", action=`/party/${idParty}/update`)
-      input.button(type="submit" value="modifier") 
+      input.button(type="submit", value="modifier") 
     h2 Supprimer l'evenemnt
     form.newParty(method="post", action=`/party/${idParty}?_method=DELETE`)
-      input.danger(type="submit" value="Supprimer") 
+      input.danger(type="submit", value="Supprimer") 
     h2 Partagez l'événement
-    div.input_field
+    .input_field
       input#url(
         type="text",
         value=`${url}`,
@@ -57,4 +66,3 @@ div.form_wrapper
     input#find-me.local(value="Montrer ma localisation")
     p#status
     a#map-link(, target="_blank")
-
