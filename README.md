@@ -22,8 +22,8 @@ C'est quoi Prettier et pourquoi l'utiliser ?
 Prettier est un outil de formatage de code, il permet à votre code de rester propre et lisible en respectant les règles du langage que vous utilisez. Ici, je l'utilise pour le JS le Pug et le Scss. On l'utilise pour deux raisons dans mon entreprise, déjà, nous utilisons plusieurs langages qui ont chacun leur type d'indentation avec plusieurs niveaux de "sévérité". Je prends l'exemple de Python ou son indentation est super importante à respecter. Deuxièmement, nous travaillons en équipe et il est important que le code reste cohérent avec les même bonne pratiques ce que nous permet de faire Prettier.
 
 Comment l'installer ?
-éxecuter: `npm install --save-dev --save-exact prettier`
-Dans le fichier ajouter dans script:
+ - éxecuter: `npm install --save-dev --save-exact prettier`
+Dans le fichier `package.json` ajouter dans script:
  - `"prettier_pug": "./node_modules/.bin/prettier --write '**/*.pug'"` pour Pug
  - `"prettier_js": "./node_modules/.bin/prettier --write '**/*.js'"`Pour JS
  - `"prettier_scss": "./node_modules/.bin/prettier --write '**/*.scss'"` Pour scss
