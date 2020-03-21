@@ -1,4 +1,3 @@
-# quiprendquoi
 # Qui prend quoi
 
 ## Installation
@@ -15,7 +14,7 @@
 - Ajout d'un design. commit `design`(`style.scss`).
 
 ## Article personnel
-### Prettie
+### Prettier
 
 Pendant le début TP, je passai énormément de temps a bien endenté mon code, faire attention aux bonnes pratiques et a ce qu'il reste lisible, cela ma fais perdre du temps sur quelque chose qui pouvais être automatisé. J'ai donc prit la décision d'utiliser Prettier.
 
