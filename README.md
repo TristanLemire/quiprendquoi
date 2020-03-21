@@ -1,4 +1,3 @@
-# quiprendquoi
 # Qui prend quoi
 
 ## Installation
@@ -15,11 +14,21 @@
 - Ajout d'un design. commit `design`(`style.scss`).
 
 ## Article personnel
-### Sujet : à completer
+### Prettier
 
-Plan en cas de panne d'inspiration :
+Pendant le début TP, je passai énormément de temps a bien endenté mon code, faire attention aux bonnes pratiques et a ce qu'il reste lisible, cela ma fais perdre du temps sur quelque chose qui pouvais être automatisé. J'ai donc prit la décision d'utiliser Prettier.
 
-- Description du sujet choisi (sa définition, son but...)
-- Exemple d'utitlisation ou d'implémentation (bout de code si pertinent, capture d'écran...)
-- Conclusion : avantages, inconvénients et cas d'usage
+C'est quoi Prettier et pourquoi l'utiliser ? 
+Prettier est un outil de formatage de code, il permet à votre code de rester propre et lisible en respectant les règles du langage que vous utilisez. Ici, je l'utilise pour le JS le Pug et le Scss. On l'utilise pour deux raisons dans mon entreprise, déjà, nous utilisons plusieurs langages qui ont chacun leur type d'indentation avec plusieurs niveaux de "sévérité". Je prends l'exemple de Python ou son indentation est super importante à respecter. Deuxièmement, nous travaillons en équipe et il est important que le code reste cohérent avec les même bonne pratiques ce que nous permet de faire Prettier.
 
+Comment l'installer ?
+ - éxecuter: `npm install --save-dev --save-exact prettier`
+Dans le fichier `package.json` ajouter dans script:
+ - `"prettier_pug": "./node_modules/.bin/prettier --write '**/*.pug'"` pour Pug
+ - `"prettier_js": "./node_modules/.bin/prettier --write '**/*.js'"`Pour JS
+ - `"prettier_scss": "./node_modules/.bin/prettier --write '**/*.scss'"` Pour scss
+ - `"prettier": "./node_modules/.bin/prettier --write '**/*.pug' ./node_modules/.bin/prettier --write '**/*.js' ./node_modules/.bin/prettier --write '**/*.scss'"` Pour tout utiliser en même temps.
+ 
+Vous pouvez aussi personnaliser vos bonnes pratiques qu'utilisera Prettier en créant a la racine de votre projet le fichier `.prettierrc`.
+
+Attention a vos fichiers qui utilisent le MarkDown Prettier peux faire n'importe quoi avec!
