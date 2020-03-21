@@ -5,9 +5,10 @@
   "main": "index.js",
   "scripts": {
     "start": "concurrently --kill-others \"npm run sass\" \"npm run watchify\" \"npm run sw\" \"nodemon app.js\"",
-    "prettier": "./node_modules/.bin/prettier --write '**/*.pug' ./node_modules/.bin/prettier --write '**/*.js'",
+    "prettier": "./node_modules/.bin/prettier --write '**/*.pug' ./node_modules/.bin/prettier --write '**/*.js' ./node_modules/.bin/prettier --write '**/*.scss'",
     "prettier_pug": "./node_modules/.bin/prettier --write '**/*.pug'",
     "prettier_js": "./node_modules/.bin/prettier --write '**/*.js'",
+    "prettier_scss": "./node_modules/.bin/prettier --write '**/*.scss'",
     "sass": "node-sass styles/style.scss public/style.css -w --output-style compressed",
     "watchify": "watchify scripts/*.js -o public/script.js -t [ babelify --presets [ @babel/preset-env babel-preset-minify ] ]",
     "sw": "watchify sw.js -o public/sw.js -t [ babelify --presets [ babel-preset-minify ] ]"
